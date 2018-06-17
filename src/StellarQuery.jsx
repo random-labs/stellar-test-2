@@ -1,17 +1,11 @@
 import React from 'react';
-let StellarSDK = 'stellar-sdk'
-const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
 
-class StellarQuery extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
+export default class StellarQuery extends React.Component {
 
   render() {
     return (
-      server.transactions()
-        .forLedger(1400)
-          .call().then((r) => console.log(r));
+      <div>Hello</div>
     )
   }
 }

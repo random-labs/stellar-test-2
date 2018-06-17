@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+import StellarSdk from 'stellar-sdk';
+const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
+var pair = StellarSdk.Keypair.random();
+
 class App extends Component {
+
+  // stellarQuery() {
+  //   server.transactions()
+  //   .forLedger(1400)
+  //   .call().then(function(r){ console.log(pair.secret(), pair.publicKey()); });
+  // }
+
+
   render() {
     return (
       <div className="App">
@@ -12,6 +25,9 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
+          {pair.secret()}
+          {pair.publicKey()}
+          Test
         </p>
       </div>
     );
