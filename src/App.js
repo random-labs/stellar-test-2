@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import {createKeypair} from './StellarFunctions.js';
 
 import StellarSdk from 'stellar-sdk';
 const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
@@ -15,7 +16,6 @@ class App extends Component {
   //   .call().then(function(r){ console.log(pair.secret(), pair.publicKey()); });
   // }
 
-
   render() {
     return (
       <div className="App">
@@ -25,8 +25,7 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-          {pair.secret()}
-          {pair.publicKey()}
+          {createKeypair()}
           Test
         </p>
       </div>

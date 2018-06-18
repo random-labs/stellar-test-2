@@ -1,7 +1,7 @@
 import sdk from 'stellar-sdk';
 import request from 'request';
 
-const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
+const server = new sdk.Server('https://horizon-testnet.stellar.org');
 const usingTestnet = true;
 
 let stellarUrl;
@@ -11,12 +11,14 @@ usingTestnet ? stellarUrl = 'https://friendbot.stellar.org' : stellarUrl = 'http
 
 export function createKeypair() {
   let pair = sdk.Keypair.random();
-  createAccount(pair, accountCreationUrl);
-  return pair;
+  //createAccount(pair, accountCreationUrl);
+  let keypair = [];
+  keypair.push(pair.secret());
+  return keypair;
 }
 
-export function createAccount(pair) {
-  request.get({ 
+function createAccount(pair) {
+  request.get({
     url: stellarUrl,
     qs: { addr: pair.publicKey() },
     json: true
@@ -30,9 +32,8 @@ export function createAccount(pair) {
   });
 }
 
-export function errorHandler (error, errorName) {
+function errorHandler(error, errorName) {
   console.log(error);
   let errorUrl = `/ErrorMessage/${errorName}`;
   window.location.assign(errorUrl);
   }
-}
