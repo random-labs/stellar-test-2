@@ -11,7 +11,7 @@ usingTestnet ? stellarUrl = 'https://friendbot.stellar.org' : stellarUrl = 'http
 
 export function createKeypair() {
   let pair = sdk.Keypair.random();
-  //createAccount(pair, accountCreationUrl);
+  createAccount(pair);
   let keypair = [];
   keypair.push(pair.secret());
   return keypair;
@@ -27,9 +27,13 @@ function createAccount(pair) {
         errorHandler(error, "createAccount")
       }
       else {
-        // onAccountCreationSuccess
+        onAccountCreationSuccess(response)
       }
   });
+}
+
+function onAccountCreationSuccess(res) {
+  console.log(res.body);
 }
 
 function errorHandler(error, errorName) {
