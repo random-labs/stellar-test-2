@@ -27,13 +27,14 @@ function createAccount(pair) {
         errorHandler(error, "createAccount")
       }
       else {
-        onAccountCreationSuccess(response)
+        onAccountCreationSuccess(response, body)
       }
   });
 }
 
-function onAccountCreationSuccess(res) {
-  console.log(res.body);
+function onAccountCreationSuccess(response,body) {
+  console.log(response);
+  console.log(body);
 }
 
 function errorHandler(error, errorName) {
