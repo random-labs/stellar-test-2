@@ -7,7 +7,7 @@ const usingTestnet = true;
 let stellarUrl;
 usingTestnet ? stellarUrl = 'https://friendbot.stellar.org' : stellarUrl = 'http://whatevermainnetlinkis.org';
 
-// Account Creation Functions
+
 
 export function createKeypair() {
   let pair = sdk.Keypair.random();
@@ -28,14 +28,13 @@ function createAccount(pair) {
         errorHandler(error, "createAccount");
       }
       else {
-        console.log(body);
-        return body;
+        //API.parseStoreResponse(response,body,pair);
       }
   });
 }
 
 function errorHandler(error, errorName) {
-  console.log(error);
+  //API.errorMessages(error);
   let errorUrl = `/ErrorMessage/${errorName}`;
   window.location.assign(errorUrl);
   }
