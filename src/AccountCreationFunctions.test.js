@@ -1,4 +1,4 @@
-import {createKeypair} from './StellarFunctions.js';
+import {createKeypair} from './AccountCreationFunctions.js';
 
 test('test if Jest is working - baseline', () => {
   expect(1+2).toBe(3);

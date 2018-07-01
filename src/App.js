@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import {createKeypair} from './StellarFunctions.js';
+import {createKeypair} from './AccountCreationFunctions.js';
 
 import StellarSdk from 'stellar-sdk';
 const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');

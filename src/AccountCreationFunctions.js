@@ -14,6 +14,7 @@ export function createKeypair() {
   createAccount(pair);
   let keypair = [];
   keypair.push(pair.secret());
+  keypair.push(pair.publicKey());
   return keypair;
 }
 
@@ -24,17 +25,13 @@ function createAccount(pair) {
     json: true
   }, (error, response, body) => {
       if (error || response.statusCode !== 200) {
-        errorHandler(error, "createAccount")
+        errorHandler(error, "createAccount");
       }
       else {
-        onAccountCreationSuccess(response, body)
+        console.log(body);
+        return body;
       }
   });
-}
-
-function onAccountCreationSuccess(response,body) {
-  console.log(response);
-  console.log(body);
 }
 
 function errorHandler(error, errorName) {
