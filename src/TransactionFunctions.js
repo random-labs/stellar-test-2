@@ -4,7 +4,7 @@ StellarSdk.Network.useTestNetwork();
 // StellarBase.Network.usePublicNetwork(); if this transaction is for the public network
 
 
-function tBuilder(transaction){
+function tBuilder(transactionDetails){
     let {address, sequenceNumber, payeeAddress, assetType, paymentAmount} = transactionDetails;
     let account=new StellarBase.Account(transactionDetails);
 
