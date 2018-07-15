@@ -25,14 +25,14 @@ function tBuilder(transactionDetails){
     .build();
 }
 
-function lumensPayment(senderPublicKey, amount, recipientPublicKey) {
+function payLumens(senderPublicKey, lumensAmount, recipientPublicKey) {
   server.loadAccount(senderPublicKey) //either direct input, or from secret as => sourceKeypair.publicKey() where sourceKeypair generated from secret;
   .then(function(account) {
     let transaction = new StellarBase.TransactionBuilder(account)
     .addOperation(StellarSdk.Operation.payment({
       destination: receiverPublicKey,
       asset: StellarSdk.Asset.native(),
-      amount: amount, //string!!! max 7DP
+      amount: lumensAmount, //string!!! max 7DP
     }))
   .build();
   }
