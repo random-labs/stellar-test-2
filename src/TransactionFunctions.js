@@ -1,9 +1,10 @@
-
+//let server = new StellarSdk.Server('horizon.stellar.org');
+let server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
 
 StellarSdk.Network.useTestNetwork();
 // StellarBase.Network.usePublicNetwork(); if this transaction is for the public network
 
-
+// UI should pass tBuilder a transaction details object
 function tBuilder(transactionDetails){
     let {address, sequenceNumber, payeeAddress, assetType, paymentAmount} = transactionDetails;
     let account=new StellarBase.Account(transactionDetails);
@@ -22,4 +23,17 @@ function tBuilder(transactionDetails){
     //         }
     //     }))
     .build();
+}
+
+function lumensPayment(senderPublicKey, amount, recipientPublicKey) {
+  server.loadAccount(senderPublicKey) //either direct input, or from secret as => sourceKeypair.publicKey() where sourceKeypair generated from secret;
+  .then(function(account) {
+    let transaction = new StellarBase.TransactionBuilder(account)
+    .addOperation(StellarSdk.Operation.payment({
+      destination: receiverPublicKey,
+      asset: StellarSdk.Asset.native(),
+      amount: amount, //string!!! max 7DP
+    }))
+  .build();
+  }
 }
