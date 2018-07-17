@@ -18,6 +18,15 @@ export function createKeypair() {
   return keypair;
 }
 
+export function keypairTest() {
+  let {Keypair} = sdk;
+  let pair = Keypair.random();
+  let keypair = [];
+  keypair.push(pair.secret());
+  keypair.push(pair.publicKey());
+  return keypair;
+}
+
 function createAccount(pair) {
   request.get({
     url: stellarUrl,

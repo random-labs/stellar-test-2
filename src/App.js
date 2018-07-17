@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import {createKeypair} from './AccountCreationFunctions.js';
+import {createKeypair, keypairTest} from './AccountCreationFunctions.js';
 
 import StellarSdk from 'stellar-sdk';
 const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
@@ -21,11 +21,13 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to Stellar</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
           {createKeypair()}
+          Test: <br />
+          {keypairTest()}
           Test
         </p>
       </div>

@@ -9,11 +9,12 @@ function payLumens(senderPublicKey, lumensAmount, recipientPublicKey) {
   server.loadAccount(senderPublicKey) //either direct input, or from secret as => sourceKeypair.publicKey() where sourceKeypair generated from secret;
   .then((account) => {
     let transaction = new StellarBase.TransactionBuilder(account)
-    .addOperation(StellarSdk.Operation.payment({
+      .addOperation(StellarSdk.Operation.payment({
       destination: receiverPublicKey,
       asset: StellarSdk.Asset.native(),
       amount: lumensAmount, //string!!! max 7DP
-    }))
-  .build();
+      }))
+      .build();
+    transaction.sign(sourceKeypair)
   }
 }
